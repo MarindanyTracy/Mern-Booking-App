@@ -1,12 +1,12 @@
 .navbar {
   height: 50px;
-  border-color: #003580;
+  background-color: #003580;
   display: flex;
   justify-content: center;
 }
 .navContainer {
   width: 100%;
-  min-width: 1024px;
+  max-width: 1024px;
   color: white;
   display: flex;
   align-items: center;
