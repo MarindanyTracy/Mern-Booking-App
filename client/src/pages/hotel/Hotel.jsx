@@ -1,11 +1,6 @@
-import React from 'react'
 
 const Hotel = () => {
-  return (
-    <div>
-      Hotel
-    </div>
-  )
+  return <h1>Hotel</h1>
 }
 
-export default Hotel
+export default Hotel;
