@@ -42,7 +42,7 @@ router.get('/:id',async (req,res) => {
   }
 })
 //GET ALL
-router.get('/:id',async (req,res) => {
+router.get('/',async (req,res) => {
   try{
     const hotels = await Hotel.find()
     res.status(200).json(hotels)
