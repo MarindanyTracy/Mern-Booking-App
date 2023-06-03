@@ -1,4 +1,5 @@
 import './propertyList.css';
+import React from 'react';
 
 const PropertyList = () => {
   return (
