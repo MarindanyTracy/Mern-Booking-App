@@ -101,7 +101,7 @@ const Header = ({type}) => {
             )} `}</span>
             {openDate && (
               <DateRange
-              minDate={newDate()}
+              minDate={new Date()}
                 editableDateInputs={true}
                 onChange={(item) => setDate([item.selection])}
                 moveRangeOnFirstSelection={false}
