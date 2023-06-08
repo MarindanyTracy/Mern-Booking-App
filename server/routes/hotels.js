@@ -10,14 +10,17 @@ router.post('/', verifyAdmin, createHotel)
 router.put('/:id', verifyAdmin, updateHotel)
 // DELETE
 router.delete('/:id', verifyAdmin, deleteHotel)
+//GET
+router.get('/:id', getHotel);
 // COUNT BY CITY
 router.get('/countByCity', countByCity)
 // COUNT BY TYPE
 router.get('/countByType', countByType)
+
 // GET ALL
 router.get('/', getHotels)
-// GET
-router.get('/:id', getHotel)
+
+
 
 
 export default router;
