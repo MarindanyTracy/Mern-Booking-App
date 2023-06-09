@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import React from "react";
 import {  useNavigate } from 'react-router-dom';
 import { DateRange } from "react-date-range";
@@ -15,11 +15,12 @@ import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 
 import "./Header.css";
+import { SearchContext } from "../../context/SearchContext.jsx";
 
 const Header = ({type}) => {
   const [destination, setDestination] = useState('')
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -42,12 +43,13 @@ const Header = ({type}) => {
       };
     });
   };
+  const { dispatch } = useContext(SearchContext);
 
-  const handleSearch =() => {
-   
-    navigate("/hotels", {state: {options,destination,date}} )
-    console.log(navigate);
-  }
+  const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { options, destination, dates } });
+  };
+
   return (
     <div className="header">
       <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
@@ -95,17 +97,17 @@ const Header = ({type}) => {
             <span
               onClick={() => setOpenDate(!openDate)}
               className="headerSearchText"
-            >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-              date[0].endDate,
+            >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+              dates[0].endDate,
               "MM/dd/yyyy"
             )} `}</span>
             {openDate && (
               <DateRange
               minDate={new Date()}
                 editableDateInputs={true}
-                onChange={(item) => setDate([item.selection])}
+                onChange={(item) => setDates([item.selection])}
                 moveRangeOnFirstSelection={false}
-                ranges={date}
+                ranges={dates}
                 className="date"
               />
             )}

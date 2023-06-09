@@ -1,8 +1,8 @@
-import { createContext, useReducer } from "react";
-
+import { createContext } from "react";
+import { useReducer } from "react";
 const INITIAL_STATE = {
   city: undefined,
-  dates: [],
+  dates: [{ startDate: new Date(), endDate: new Date() }], // Set default dates
   options: {
     adult: undefined,
     children: undefined,
